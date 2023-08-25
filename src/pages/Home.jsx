@@ -1,7 +1,6 @@
 import React from "react";
-import Navbar1 from "../components/Navbar1";
+import Navbar from "../components/Navbar";
 import SliderView from "../components/Slider";
-import FooterMenu from "../components/FooterMenu";
 import Keyfeatures from "../components/Keyfeatures";
 import WhyChoseAfri from "../components/WhyChoseAfri";
 import History from "../components/History";
@@ -12,7 +11,7 @@ import HeroSection from "../components/HeroSection";
 const Home = () => {
   return (
     <>
-      <Navbar1 />
+      <Navbar />
       <HeroSection />
       <Keyfeatures />
       <SliderView />
@@ -20,7 +19,6 @@ const Home = () => {
       <Testimony />
       <Pathnership />
       <History />
-      <FooterMenu />
     </>
   );
 };

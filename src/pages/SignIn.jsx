@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import login from "../images/signIn.png";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
   height: 100%;
@@ -106,25 +107,62 @@ const P = styled.p`
   font-size: 0.8rem;
 `;
 const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState(null);
+  const [response, setResponse] = useState(null);
+
+  const fetcher = async () => {
+    const details = { email, password };
+
+    const res = await fetch(URL, {
+      method: "POST",
+      body: JSON.stringify(details),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const response = await res.json();
+
+    if (!res.ok) {
+      return setError(response.message);
+    }
+
+    setResponse(response.message);
+  };
+
+  useEffect(() => {
+    fetcher();
+  }, []);
+
   return (
     <Container>
-      <Navbar />
+      {/* <Navbar /> */}
       <SmallCont>
         <SmallCont1>
-          <Form>
+          (response && <p> {response.message} </p>)
+          <Form onSubmit={fetcher}>
             <H2>
               {" "}
               Welcome back, <span>Shone</span>
             </H2>
             <SmallerCont>
-              <Input placeholder="Enter Your Email"></Input>
+              <Input
+                placeholder="Enter Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></Input>
               <Input
                 type="password"
-                placeholder="Enter Your Password(Min. 8 Character) "
+                placeholder="Enter Your Password(Min. 8 Character)"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               ></Input>
               {/* <Checkbox /> */}
 
               <Button>Sign In</Button>
+              {error && <p>{error}</p>}
               <OrContainer>
                 <Hr /> OR <Hr />
               </OrContainer>

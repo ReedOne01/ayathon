@@ -54,7 +54,7 @@ const Content1 = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 8rem;
   width: auto;
   font-size: 12px;
@@ -144,7 +144,7 @@ const FooterMenu = () => {
       <SmallCont>
         <Container2>
           <Container3>
-            <Cont> &copy 2024 Afri-Vote. All right reserved.</Cont>
+            <Cont> &copy; 2024 Afri-Vote. All right reserved.</Cont>
             <Cont>Privacy Policy</Cont>
             <Cont>Terms of Services</Cont>
           </Container3>

@@ -15,9 +15,20 @@ const Container = styled.div`
   background-size: cover;
   color: white;
   margin-bottom: 2rem;
-  border: 1px solid red;
-  // opacity: 40%;
+  // border: 1px solid red;
+  // blur: filter(20%);
   z-index: -1;
+  // filter: brightness(60%);
+`;
+const Container2 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: black;
+  opacity: 0.2;
+  height: 100vh;
+  width: 100vw;
 `;
 const SmallCont = styled.div`
   // background-color: rgba(0, 0, 0, 0.5);
@@ -26,7 +37,9 @@ const SmallCont = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
+  // border: 1px solid red;
+  // filter: brightness(100%)
+  z-index: 100;
 `;
 const H2 = styled.h1``;
 const P = styled.p``;
@@ -79,9 +92,18 @@ const ImgCont = styled.div`
 
 const HeroSection = () => {
   return (
-    <Container>
+    <Container
+    // style={{
+    //   position: "relative",
+    //   backgroundImage: ` url(${backgrd}`,
+    // }}
+    >
       <ImgCont>{/* <Compass src={compass} /> */}</ImgCont>
-      <SmallCont>
+      <SmallCont
+        style={{
+          zIndex: "100",
+        }}
+      >
         <H2>
           Empower Democracy <br /> with Afri-vote
         </H2>
@@ -135,6 +157,14 @@ const HeroSection = () => {
           </Button>
         </BtnCont>
       </SmallCont>
+      <Compass
+        src={compass}
+        style={{
+          position: "absolute",
+          top: "70%",
+          left: "83%",
+        }}
+      />
     </Container>
   );
 };

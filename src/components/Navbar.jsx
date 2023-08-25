@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import logo from "../images/Frame 4.png";
-import { Link } from "react-router-dom";
+import { useParams, Routes, Link, NavLink } from "react-router-dom";
+import SignIn from "../pages/SignIn";
+import Signup from "../pages/Signup";
 
 const Container = styled.div`
   position: absolute;
@@ -8,6 +10,8 @@ const Container = styled.div`
   left: 0;
   right: 0;
   z-index: 1;
+  color: white;
+  // background-color: white;
 `;
 const Nav = styled.nav`
   display: flex;
@@ -16,6 +20,7 @@ const Nav = styled.nav`
   height: 4rem;
   width: 100%;
 `;
+
 const ImgCont = styled.div`
   background: white;
   height: 3rem;
@@ -33,6 +38,9 @@ const Ul = styled.ul`
   padding: 0 1rem;
   gap: 1.5rem;
   margin-top: 1rem;
+  margin-left: 5rem;
+  border: 1px solid red;
+  // width: 24rem;
   position: relative;
 
   &::after {
@@ -65,22 +73,28 @@ const BtnCont = styled.div`
 `;
 const Button = styled.button`
   border: 0.5px solid white;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   padding: 0.6rem 1.5rem;
   border-radius: 10px;
   background: none;
-  // color: white;
+  color: white;
   font-family: Open Sans;
+  transition: all 0.5s ease;
 
   background-color: ${(props) =>
     props.type === "secondBtn" ? "#00b050" : "transparent"};
 
   &:hover {
-    // background-color: #00b050;
+    transform: scaleX(1.1);
+    background-color: ${(props) =>
+      props.type === "firstBtn" ? "#00b050" : "white"};
+    color: ${(props) => (props.type === "secondBtn" ? "#00b050" : "white")};
+    border: ${(props) => props.type === "secondBtn" && "1px solid #00b050"};
   }
-  &: hover~;
+  &:hover ~ Li {
+    color: black;
+  }
 `;
-
 const Navbar1 = () => {
   return (
     <Container>
@@ -90,15 +104,29 @@ const Navbar1 = () => {
         </ImgCont>
 
         <Ul className="list1">
-          <Li className="list">Home</Li>
-          <Li className="list">About</Li>
-          <Li className="list">Contact</Li>
-          <Li className="list">Election</Li>
+          <NavLink to="/">
+            <Li className="list">Home</Li>
+          </NavLink>
+          <NavLink to="/about">
+            <Li className="list">About</Li>
+          </NavLink>
+          <NavLink to="/contact">
+            <Li className="list">Contact</Li>
+          </NavLink>
+          <NavLink to="/election">
+            <Li className="list">Election</Li>
+          </NavLink>
         </Ul>
 
         <BtnCont>
-          <Button style={{}}>Sign In</Button>
-          <Button type="secondBtn"> Register Now</Button>
+          <Link to="signin">
+            <Button className="btn1" type="firstBtn">
+              Sign In
+            </Button>
+          </Link>
+          <Link to="signup">
+            <Button type="secondBtn"> Register Now</Button>
+          </Link>
         </BtnCont>
       </Nav>
     </Container>

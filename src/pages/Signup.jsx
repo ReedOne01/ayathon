@@ -75,7 +75,7 @@ const Button = styled.button`
 const Signup = () => {
   return (
     <Container>
-      <Navbar />
+      {/* <Navbar /> */}
       <SmallCont>
         <SmallCont1>
           <Form>

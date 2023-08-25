@@ -39,3 +39,21 @@ code {
 .list:hover {
   /* font-size: 2rem; */
 }
+
+Nav a {
+  text-decoration: none;
+  color: white;
+  transition: 0.5s all;
+}
+Nav a.active {
+  text-decoration: underline;
+  color: #00b050;
+  transform: scale(1.2);
+}
+.btn1 {
+  transition: all 0.5s;
+}
+.btn1:hover {
+  background-color: "#00b050";
+  transform: scaleX(1.1);
+}
